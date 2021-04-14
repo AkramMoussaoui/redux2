@@ -1,15 +1,19 @@
-import { PLUS, MOIN } from "../Constants/CounterConstants";
-const initialState = { count: 0 };
+import constants from "../Constants/counterConstants";
 
-export const counterReducer = (state = initialState, action) => {
+const initialState = { counter: 0, name: "" };
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case PLUS:
-      return { count: state.count + action.payload };
-
-    case MOIN:
-      return { count: state.count - action.payload };
-
+    case constants.ADD:
+      return { counter: state.counter + 1, name: state.name };
+    case constants.MINUS:
+      return { counter: state.counter - 1, name: state.name };
+    case constants.CHANGE:
+      return { counter: state.counter, name: action.payload };
+    case constants.RESET:
+      return { counter: state.counter, name: "" };
     default:
       return state;
   }
 };
+
+export default reducer;

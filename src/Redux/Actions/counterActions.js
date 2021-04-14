@@ -1,15 +1,33 @@
-import { PLUS, MOIN } from "../Constants/CounterConstants";
+import constants from "../Constants/counterConstants";
 
-export const addToCounter = () => {
+const addToCounter = () => {
   return {
-    type: PLUS,
-    payload: 5,
+    type: constants.ADD,
   };
 };
 
-export const removeFromCounter = () => {
+const removeFromCounter = () => {
   return {
-    type: MOIN,
-    payload: 2,
+    type: constants.MINUS,
   };
+};
+
+const changeName = (name) => {
+  return {
+    type: constants.CHANGE,
+    payload: name,
+  };
+};
+
+const resetName = () => {
+  return {
+    type: constants.RESET,
+  };
+};
+
+export default {
+  addToCounter,
+  removeFromCounter,
+  changeName,
+  resetName,
 };
