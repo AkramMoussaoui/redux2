@@ -1,7 +1,8 @@
 import "./App.css";
 import { useReducer, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import actions from "./Redux/Actions/counterActions";
+import counterActions from "./Redux/Actions/counterActions";
+import nameActions from "./Redux/Actions/nameActions";
 // const ADD = "add";
 // const MINUS = "minus";
 // const CHANGE = "changeName";
@@ -55,15 +56,17 @@ function App() {
   const [input, setInput] = useState("");
   return (
     <div className="App">
-      <p> Counter : {state.counter}</p>
-      <button onClick={() => dispatch(actions.addToCounter())}>+</button>
-      <button onClick={() => dispatch(actions.removeFromCounter())}>-</button>
-      <p> Name : {state.name}</p>
+      <p> Counter : {state.state2.counter}</p>
+      <button onClick={() => dispatch(counterActions.addToCounter())}>+</button>
+      <button onClick={() => dispatch(counterActions.removeFromCounter())}>
+        -
+      </button>
+      <p> Name : {state.state1.name}</p>
       <input onChange={(e) => setInput(e.target.value)} />
-      <button onClick={() => dispatch(actions.changeName(input))}>
+      <button onClick={() => dispatch(nameActions.changeName(input))}>
         Change
       </button>
-      <button onClick={() => dispatch(actions.resetName())}>Reset</button>
+      <button onClick={() => dispatch(nameActions.resetName())}>Reset</button>
     </div>
   );
 }
